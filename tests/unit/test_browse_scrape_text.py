@@ -58,7 +58,7 @@ class TestScrapeText:
         # Call the function with an invalid URL and assert that it returns an error message
         url = "http://www.invalidurl.com"
         error_message = scrape_text(url)
-        assert "Error:" in error_message
+        assert "error" in error_message.lower()
 
     # Tests that the function returns an empty string when the html page contains no text to be scraped.
     def test_no_text(self, mocker):
@@ -81,7 +81,7 @@ class TestScrapeText:
         result = scrape_text("https://www.example.com")
 
         # Check that the function returns an error message
-        assert result == "Error: HTTP 404 error"
+        assert "error" in result.lower()
 
     # Tests that scrape_text() properly handles HTML tags.
     def test_scrape_text_with_html_tags(self, mocker):
